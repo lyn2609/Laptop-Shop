@@ -49,7 +49,7 @@ public class UserController {
         return "admin/user/show";
     }
 
-    @RequestMapping("/admin/user/{id}")
+    @GetMapping("/admin/user/{id}")
     public String getUserDetailPage(Model model, @PathVariable long id){
         User user = this.userService.getUserById(id);
         model.addAttribute("user", user);
@@ -57,7 +57,7 @@ public class UserController {
         return "admin/user/detail";
     }
 
-    @RequestMapping("/admin/user/update/{id}")
+    @GetMapping("/admin/user/update/{id}")
     public String getUpdatePage(Model model, @PathVariable long id){
         User currentUser = this.userService.getUserById(id);
         model.addAttribute("newUser", currentUser);
@@ -65,11 +65,17 @@ public class UserController {
     }
 
     @PostMapping("/admin/user/update")
-    public String postUpdateUser(Model model, @ModelAttribute("newUser") User yennhi){
+    public String handleUpdateUser(@ModelAttribute("newUser") User yennhi,
+            @RequestParam("hoidanitFile") MultipartFile file) {
         User currentUser = this.userService.getUserById(yennhi.getId());
-        if(currentUser != null){
-            currentUser.setAddress(yennhi.getAddress());
+
+        if (currentUser != null) {
+            if (!file.isEmpty()) {
+                String avatarImg = this.uploadService.handleSaveUploadFile(file, "avatar");
+                currentUser.setAvatar(avatarImg);
+            }
             currentUser.setFullName(yennhi.getFullName());
+            currentUser.setAddress(yennhi.getAddress());
             currentUser.setPhone(yennhi.getPhone());
             this.userService.handleSaveUser(currentUser);
         }
@@ -121,4 +127,3 @@ public class UserController {
         return "redirect:/admin/user";
     }
 }
-

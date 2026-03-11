@@ -23,6 +23,8 @@
                             </div>
                             <hr />
                             <div class="card" style="width: 60%">
+                                <img class="card-img-top" src="/images/avatar/${user.avatar}"
+                                    alt="Card image cap">
                                 <div class="card-header">
                                     User information
                                 </div>
