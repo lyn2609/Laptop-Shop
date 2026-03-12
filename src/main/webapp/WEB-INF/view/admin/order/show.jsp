@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+        
 
             <!DOCTYPE html>
             <html lang="en">
@@ -70,38 +71,42 @@
 
                                                 </tbody>
                                             </table>
-                                            <nav aria-label="Page navigation example">
-                                                <ul class="pagination justify-content-center">
-                                                    <li class="page-item">
-                                                        <a class="${1 eq currentPage ? 'disabled page-link' : 'page-link'}"
-                                                            href="/admin/order?page=${currentPage - 1}"
-                                                            aria-label="Previous">
-                                                            <span aria-hidden="true">&laquo;</span>
-                                                        </a>
+                                            <c:if test="${totalPages > 0}">
+                                                <nav aria-label="Page navigation example">
+                                                    <ul class="pagination justify-content-center">
+                                            
+                                                        <li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
+                                                            <a class="page-link"
+                                                                href="${currentPage == 1 ? '#' : '/admin/order?page='}${currentPage == 1 ? '' : currentPage - 1}"
+                                                                aria-label="Previous">
+                                                                <span aria-hidden="true">&laquo;</span>
+                                                            </a>
                                                         </li>
-                                                        <c:if test="${totalPages > 0}">
-                                                            <c:forEach begin="0" end="${totalPages - 1}" varStatus="loop">
-                                                                <li class="page-item">
-                                                                    <a class="${(loop.index + 1) eq currentPage ? 'active page-link' : 'page-link'}"
-                                                                        href="/admin/order?page=${loop.index + 1}">
-                                                                        ${loop.index + 1}
-                                                                    </a>
-                                                                </li>
-                                                            </c:forEach>
-                                                        </c:if>
-                                                        <li class="page-item">
-                                                            <a class="${totalPages eq currentPage ? 'disabled page-link' : 'page-link'}"                               href="/admin/order?page=${currentPage + 1}"
-                                                            aria-label="Next">
-                                                            <span aria-hidden="true">&raquo;</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </div>
-
-                                    </div>
-
-                                </div>
+                                            
+                                                        <c:forEach begin="1" end="${totalPages}" var="i">
+                                                            <li class="page-item ${i == currentPage ? 'active' : ''}">
+                                                                <a class="page-link" href="/admin/order?page=${i}">
+                                                                    ${i}
+                                                                </a>
+                                                            </li>
+                                                        </c:forEach>
+                                            
+                                                        <li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
+                                                            <a class="page-link"
+                                                                href="${currentPage == totalPages ? '#' : '/admin/order?page='}${currentPage == totalPages ? '' : currentPage + 1}"
+                                                                aria-label="Next">
+                                                                <span aria-hidden="true">&raquo;</span>
+                                                            </a>
+                                                        </li>
+                                            
+                                                    </ul>
+                                                </nav>
+                                            </c:if>
+                                            </div>
+                                            
+                                            </div>
+                                            
+                                            </div>
                             </div>
                         </main>
                         <jsp:include page="../layout/footer.jsp" />
