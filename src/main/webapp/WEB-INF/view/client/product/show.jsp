@@ -146,28 +146,28 @@
 
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="price-2"
-                                                        value="duoi-10-trieu">
-                                                    <label class="form-check-label" for="price-2">Dưới 10 triệu</label>
+                                                        value="duoi-20-trieu">
+                                                    <label class="form-check-label" for="price-2">Dưới 20 triệu</label>
                                                 </div>
 
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="price-3"
-                                                        value="10-15-trieu">
-                                                    <label class="form-check-label" for="price-3">Từ 10 - 15
+                                                        value="20-25-trieu">
+                                                    <label class="form-check-label" for="price-3">Từ 20 - 25
                                                         triệu</label>
                                                 </div>
 
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="price-4"
-                                                        value="15-20-trieu">
-                                                    <label class="form-check-label" for="price-4">Từ 15 - 20
+                                                        value="25-30-trieu">
+                                                    <label class="form-check-label" for="price-4">Từ 25 - 30
                                                         triệu</label>
                                                 </div>
 
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="price-5"
-                                                        value="tren-20-trieu">
-                                                    <label class="form-check-label" for="price-5">Trên 20 triệu</label>
+                                                        value="tren-30-trieu">
+                                                    <label class="form-check-label" for="price-5">Trên 30 triệu</label>
                                                 </div>
                                             </div>
                                             <div class="col-12">
