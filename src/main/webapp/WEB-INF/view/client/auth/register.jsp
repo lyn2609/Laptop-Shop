@@ -13,6 +13,39 @@
                 <title>Register - Laptopshop</title>
                 <link href="/css/styles.css" rel="stylesheet" />
                 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+                <!-- <style>
+                    .password-wrapper {
+                        position: relative;
+                    }
+
+                    .password-wrapper .form-floating {
+                        flex: 1;
+                    }
+
+                    .toggle-password {
+                        position: absolute;
+                        top: 50%;
+                        right: 2rem;
+                        /* đẩy sang trái, nhường chỗ cho icon validation */
+                        transform: translateY(-50%);
+                        background: none;
+                        border: none;
+                        cursor: pointer;
+                        color: #6c757d;
+                        z-index: 10;
+                        padding: 0;
+                        line-height: 1;
+                    }
+
+                    .toggle-password:hover {
+                        color: #343a40;
+                    }
+
+                    .password-wrapper .form-control {
+                        padding-right: 4rem;
+                        /* tăng lên để chừa chỗ cho cả 2 icon */
+                    }
+                </style> -->
             </head>
 
             <body class="bg-primary">
@@ -27,7 +60,8 @@
                                                 <h3 class="text-center font-weight-light my-4">Create Account</h3>
                                             </div>
                                             <div class="card-body">
-                                                <form:form method="post" action="/register" modelAttribute="registerUser">
+                                                <form:form method="post" action="/register"
+                                                    modelAttribute="registerUser">
                                                     <c:set var="errorPassword">
                                                         <form:errors path="confirmPassword"
                                                             cssClass="invalid-feedback" />
@@ -43,7 +77,8 @@
                                                         <div class="col-md-6">
                                                             <div class="form-floating mb-3 mb-md-0">
                                                                 <form:input class="form-control" id="inputFirstName"
-                                                                    type="text" placeholder="Enter your first name" path="firstName"/>
+                                                                    type="text" placeholder="Enter your first name"
+                                                                    path="firstName" />
                                                                 <label for="inputFirstName">First name</label>
                                                                 ${errorFirstName}
                                                             </div>
@@ -51,7 +86,8 @@
                                                         <div class="col-md-6">
                                                             <div class="form-floating">
                                                                 <form:input class="form-control" id="inputLastName"
-                                                                    type="text" placeholder="Enter your last name" path="lastName"/>
+                                                                    type="text" placeholder="Enter your last name"
+                                                                    path="lastName" />
                                                                 <label for="inputLastName">Last name</label>
                                                             </div>
                                                         </div>
@@ -83,6 +119,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
+
                                                     <div class="mt-4 mb-0">
                                                         <div class="d-grid">
                                                             <button class="btn btn-primary btn-block">
@@ -107,6 +144,22 @@
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
                     crossorigin="anonymous"></script>
                 <script src="/js/scripts.js"></script>
+                <script src="/js/scripts.js"></script>
+                <!-- <script>
+                    function togglePassword(inputId, btn) {
+                        var input = document.getElementById(inputId);
+                        var icon = btn.querySelector('i');
+                        if (input.type === 'password') {
+                            input.type = 'text';
+                            icon.classList.remove('fa-eye');
+                            icon.classList.add('fa-eye-slash');
+                        } else {
+                            input.type = 'password';
+                            icon.classList.remove('fa-eye-slash');
+                            icon.classList.add('fa-eye');
+                        }
+                    }
+                </script> -->
             </body>
 
             </html>

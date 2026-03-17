@@ -3,7 +3,9 @@ package vn.hoidanit.laptopshop.controller.admin;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,19 +16,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import vn.hoidanit.laptopshop.domain.Order;
 import vn.hoidanit.laptopshop.service.OrderService;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-
 
 @Controller
 public class OrderController {
+
     private final OrderService orderService;
-    
+
     public OrderController(OrderService orderService) {
         this.orderService = orderService;
     }
 
-
+    @GetMapping("/admin/order")
     public String getDashboard(Model model,
             @RequestParam("page") Optional<String> pageOptional) {
 
@@ -52,7 +52,6 @@ public class OrderController {
         model.addAttribute("totalPages", ordersPage.getTotalPages());
         return "admin/order/show";
     }
-
 
     @GetMapping("/admin/order/{id}")
     public String getOrderDetailPage(Model model, @PathVariable long id) {

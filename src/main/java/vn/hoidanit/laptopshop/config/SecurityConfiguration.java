@@ -50,7 +50,7 @@ public class SecurityConfiguration {
     public SpringSessionRememberMeServices rememberMeServices() {
         SpringSessionRememberMeServices rememberMeServices = new SpringSessionRememberMeServices();
         // optionally customize
-        rememberMeServices.setAlwaysRemember(true);
+        rememberMeServices.setAlwaysRemember(false);
         return rememberMeServices;
     }
 
@@ -62,7 +62,7 @@ public class SecurityConfiguration {
                                 DispatcherType.INCLUDE)
                         .permitAll()
                         .requestMatchers("/", "/login", "/product/**", "/register",
-                        "/client/**", "/css/**", "/js/**","/images/**")
+                        "/forgot-password", "/forgot_password", "/reset-password", "/client/**", "/css/**", "/js/**","/images/**", "/products/**")
                         .permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated())

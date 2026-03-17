@@ -27,7 +27,7 @@
                                                 <h3 class="text-center font-weight-light my-4">Login</h3>
                                             </div>
                                             <div class="card-body">
-                                                <form method="post" action="/login">
+                                                <form:form method="post" action="/login" modelAttribute="loginUser">
                                                     <c:if test="${param.error != null}">
                                                         <div class="my-2" style="color: red;">Invalid email or password.
                                                         </div>
@@ -47,12 +47,18 @@
                                                             placeholder="Password" name="password" />
                                                         <label>Password</label>
                                                     </div>
-                                                    <div>
+                                                    <div class="form-check mb-3">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            name="remember-me" id="rememberMe" />
+                                                        <label class="form-check-label" for="rememberMe">
+                                                            Remember me
+                                                        </label>
+                                                    </div>
+                                                    <!-- <div>
                                                         <input type="hidden" name="${_csrf.parameterName}"
                                                             value="${_csrf.token}" />
-
-                                                    </div>
-
+                                                    </div> -->
+                            
                                                     <div class="mt-4 mb-0">
                                                         <div class="d-grid">
                                                             <button class="btn btn-primary btn-block">
@@ -60,7 +66,11 @@
                                                             </button>
                                                         </div>
                                                     </div>
-                                                </form>
+                                                    <div class="text-center mt-3">
+                                                        <a class="small" href="/forgot-password">Forgot your password?</a>
+                                                    </div>
+                                                    
+                                                </form:form>
                                             </div>
                                             <div class="card-footer text-center py-3">
                                                 <div class="small"><a href="/register">Need an account? Sign up!</a>

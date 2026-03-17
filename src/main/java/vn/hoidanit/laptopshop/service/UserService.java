@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import vn.hoidanit.laptopshop.domain.Role;
@@ -88,4 +89,26 @@ public class UserService {
         return this.userRepository.findAll(page);
     }
     
+    public void updateResetPasswordToken(String token, String email) throws UserNotFoundException {
+        User user = this.userRepository.findByEmail(email);
+        if(user != null){
+            user.setResetPasswordToken(token);
+            this.userRepository.save(user);
+        }
+        else{
+            throw new UserNotFoundException("Could not find any user with the email " + email);
+        }
+    }
+
+    public User get(String resetPasswordToken){
+        return userRepository.findByResetPasswordToken(resetPasswordToken);
+    }
+
+    public void updatePassword(User user, String newPassword){
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(newPassword);
+        user.setPassword(encodedPassword);
+        user.setResetPasswordToken(null);
+        userRepository.save(user);
+    }
 }

@@ -53,6 +53,8 @@ public class User {
     @OneToOne(mappedBy = "user")
     private Cart cart;
 
+    private String resetPasswordToken;
+
     public Role getRole() {
         return role;
     }
@@ -132,11 +134,19 @@ public class User {
     public void setCart(Cart cart) {
         this.cart = cart;
     }
-    
+
+    public String getResetPasswordToken() {
+        return resetPasswordToken;
+    }
+
+    public void setResetPasswordToken(String resetPasswordToken) {
+        this.resetPasswordToken = resetPasswordToken;
+    }
 
     @Override
 
     public String toString(){
         return "User [id=" + id + ", email=" + email + ", password=" + password + ", address + " + address + ", phone=" + phone + "]";
     }
+
 }

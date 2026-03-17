@@ -1,5 +1,7 @@
 package vn.hoidanit.laptopshop.domain;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,12 +13,13 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
-
 @Entity
 @Table(name = "products")
+public class Product implements Serializable {
 
-public class Product {
-    @Id 
+    private static final long serialVersionUID = 1L;
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
@@ -24,24 +27,25 @@ public class Product {
     @NotEmpty(message = "Tên sản phẩm không được để trống")
     private String name;
 
-    @NotNull 
-    @DecimalMin(value = "0", inclusive = false, message = "Giá phải lớn hơn 0")
+    @NotNull
+    @DecimalMin(value = "0", inclusive = false, message = "Price phải lớn hơn 0")
     private double price;
 
     private String image;
 
-    @NotNull 
-    @NotEmpty(message = "Mô tả chi tiết không được để trống")
+    @NotNull
+    @NotEmpty(message = "detailDesc không được để trống")
     @Column(columnDefinition = "MEDIUMTEXT")
     private String detailDesc;
 
     @NotNull
-    @NotEmpty(message = "Mô tả ngắn không được để trống")
+    @NotEmpty(message = "shortDesc không được để trống")
     private String shortDesc;
 
     @NotNull
     @Min(value = 1, message = "Số lượng cần lớn hơn hoặc bằng 1")
     private long quantity;
+
     private long sold;
     private String factory;
     private String target;
@@ -124,20 +128,13 @@ public class Product {
 
     public void setTarget(String target) {
         this.target = target;
-    } 
-
-        @Override
-    public String toString() {
-        return "Product [id=" + id 
-                + ", name=" + name 
-                + ", price=" + price 
-                + ", image=" + image 
-                + ", detailDesc=" + detailDesc 
-                + ", shortDesc=" + shortDesc 
-                + ", quantity=" + quantity 
-                + ", sold=" + sold 
-                + ", factory=" + factory 
-                + ", target=" + target 
-                + "]";
     }
+
+    @Override
+    public String toString() {
+        return "Product [id=" + id + ", name=" + name + ", price=" + price + ", image=" + image + ", detailDesc="
+                + detailDesc + ", shortDesc=" + shortDesc + ", quantity=" + quantity + ", sold=" + sold + ", factory="
+                + factory + ", target=" + target + "]";
+    }
+
 }
