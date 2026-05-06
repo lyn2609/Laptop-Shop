@@ -1,0 +1,2 @@
+spring.security.oauth2.client.registration.google.client-id=your_client_id_here
+spring.security.oauth2.client.registration.google.client-secret=your_client_secret_here
